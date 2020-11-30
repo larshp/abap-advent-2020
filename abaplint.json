@@ -17,7 +17,7 @@
   "rename": {
     "output": "renamed",
     "skip": [],
-    "patterns": [{"type": "CLAS|INTF", "oldName": "(.*)_rename", "newName": "$1_foobar"}]
+    "patterns": [{"type": "CLAS|INTF", "oldName": "(.*)_rename", "newName": "$1_hvam"}]
   },
   "syntax": {
     "version": "v740sp08",
