@@ -10,7 +10,7 @@ CLASS ltcl_test IMPLEMENTATION.
 
   METHOD part1.
 
-    DATA lo_day1 TYPE REF TO zcl_advent2020_day01_hvam..
+    DATA lo_day1 TYPE REF TO zcl_advent2020_day01_hvam.
 
     CREATE OBJECT lo_day1.
 
