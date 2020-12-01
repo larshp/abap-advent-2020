@@ -234,10 +234,9 @@
     "max_one_statement": true,
     "message_exists": true,
     "method_length": {
-      "exclude": [],
       "severity": "Error",
       "statements": 100,
-      "errorWhenEmpty": true,
+      "errorWhenEmpty": false,
       "ignoreTestClasses": false
     },
     "method_overwrites_builtin": true,
@@ -248,13 +247,9 @@
     "nesting": true,
     "newline_between_methods": true,
     "no_public_attributes": {
-      "exclude": [],
-      "severity": "Error",
       "allowReadOnly": false
     },
     "object_naming": {
-      "exclude": [],
-      "severity": "Error",
       "patternKind": "required",
       "ignoreNames": [],
       "ignorePatterns": [],
@@ -278,8 +273,6 @@
       "shlp": "^Z"
     },
     "obsolete_statement": {
-      "exclude": [],
-      "severity": "Error",
       "refresh": true,
       "compute": true,
       "add": true,
@@ -305,8 +298,6 @@
     "prefer_returning_to_exporting": true,
     "prefer_xsdbool": true,
     "preferred_compare_operator": {
-      "exclude": [],
-      "severity": "Error",
       "badOperators": [
         "EQ",
         "><",
@@ -379,11 +370,7 @@
       "severity": "Error",
       "skipNames": []
     },
-    "unused_variables": {
-      "exclude": [],
-      "severity": "Error",
-      "skipNames": []
-    },
+    "unused_variables": false,
     "use_bool_expression": true,
     "use_line_exists": true,
     "use_new": false,
