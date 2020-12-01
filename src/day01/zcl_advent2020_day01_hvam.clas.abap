@@ -33,8 +33,7 @@ CLASS ZCL_ADVENT2020_DAY01_HVAM IMPLEMENTATION.
     LOOP AT lt_strings INTO DATA(lv_string1).
       LOOP AT lt_strings INTO DATA(lv_string2).
         IF lv_string1 + lv_string2 = 2020.
-          output = CONV i( lv_string1 * lv_string2 ).
-          CONDENSE output.
+          output = condense( CONV i( lv_string1 * lv_string2 ) ).
           RETURN.
         ENDIF.
       ENDLOOP.
@@ -51,8 +50,7 @@ CLASS ZCL_ADVENT2020_DAY01_HVAM IMPLEMENTATION.
       LOOP AT lt_strings INTO DATA(lv_string2).
         LOOP AT lt_strings INTO DATA(lv_string3).
           IF lv_string1 + lv_string2 + lv_string3 = 2020.
-            output = CONV i( lv_string1 * lv_string2 * lv_string3 ).
-            CONDENSE output.
+            output = condense( CONV i( lv_string1 * lv_string2 * lv_string3 ) ).
             RETURN.
           ENDIF.
         ENDLOOP.
