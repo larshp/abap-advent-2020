@@ -12,13 +12,12 @@ ENDCLASS.
 
 
 
-CLASS ZCL_ADVENT2020_DAY01_HVAM IMPLEMENTATION.
+CLASS zcl_advent2020_day01_hvam IMPLEMENTATION.
 
 
   METHOD zif_advent2020_hvam~solve.
 
     DATA lt_strings TYPE STANDARD TABLE OF string WITH DEFAULT KEY.
-    DATA lt_integers TYPE STANDARD TABLE OF i WITH DEFAULT KEY.
     DATA lv_temp TYPE i.
 
     SPLIT input AT |\n| INTO TABLE lt_strings.
@@ -28,6 +27,7 @@ CLASS ZCL_ADVENT2020_DAY01_HVAM IMPLEMENTATION.
         IF lv_string1 + lv_string2 = 2020.
           lv_temp = lv_string1 * lv_string2.
           output = lv_temp.
+          WRITE lv_temp.
           CONDENSE output.
           RETURN.
         ENDIF.
