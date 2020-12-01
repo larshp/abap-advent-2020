@@ -1,21 +1,20 @@
+
 CLASS ltcl_test DEFINITION FOR TESTING DURATION SHORT RISK LEVEL HARMLESS FINAL.
 
   PRIVATE SECTION.
-    METHODS: solve FOR TESTING.
+    METHODS: part1 FOR TESTING.
 ENDCLASS.
 
 
 CLASS ltcl_test IMPLEMENTATION.
 
-  METHOD solve.
+  METHOD part1.
 
-    RETURN.
+    DATA lo_day1 TYPE REF TO zcl_advent2020_day01_hvam..
 
-    DATA li_day1 TYPE REF TO zif_advent2020_hvam.
+    CREATE OBJECT lo_day1.
 
-    CREATE OBJECT li_day1 TYPE zcl_advent2020_day01_hvam.
-
-    DATA(lv_result) = li_day1->solve( |1721\n979\n366\n299\n675\n1456| ).
+    DATA(lv_result) = lo_day1->part1( |1721\n979\n366\n299\n675\n1456| ).
 
     cl_abap_unit_assert=>assert_equals(
       act = lv_result
