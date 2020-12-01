@@ -42,7 +42,7 @@ CLASS ZCL_ADVENT2020_DAY02_HVAM IMPLEMENTATION.
 
   METHOD zif_advent2020_hvam~solve.
 
-    output = 'todo'.
+    output = 'ABAPtodoABAP'.
 
   ENDMETHOD.
 ENDCLASS.
