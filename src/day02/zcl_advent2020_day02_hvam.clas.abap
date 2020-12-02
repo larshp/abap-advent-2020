@@ -59,12 +59,17 @@ CLASS ZCL_ADVENT2020_DAY02_HVAM IMPLEMENTATION.
 
   METHOD part1.
 
+    DATA lv_min TYPE i.
+    DATA lv_max TYPE i.
+
     DATA(lt_passwords) = parse( input ).
     DATA(lv_valid) = 0.
 
     LOOP AT lt_passwords INTO DATA(ls_password).
       FIND ALL OCCURRENCES OF ls_password-letter IN ls_password-password MATCH COUNT DATA(lv_count).
-      IF lv_count BETWEEN ls_password-min AND ls_password-max.
+      lv_min = ls_password-min.
+      lv_max = ls_password-max.
+      IF lv_count BETWEEN lv_min AND lv_max.
         lv_valid = lv_valid + 1.
       ENDIF.
     ENDLOOP.
