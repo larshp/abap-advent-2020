@@ -82,14 +82,36 @@ CLASS ZCL_ADVENT2020_DAY02_HVAM IMPLEMENTATION.
 
   METHOD part2.
 
-* todo
+    DATA lv_pos1 TYPE i.
+    DATA lv_pos2 TYPE i.
+    DATA lv_val1 TYPE c.
+    DATA lv_val2 TYPE c.
+
+    DATA(lt_passwords) = parse( input ).
+    DATA(lv_valid) = 0.
+
+    LOOP AT lt_passwords INTO DATA(ls_password).
+      lv_pos1 = ls_password-min - 1.
+      lv_pos2 = ls_password-max - 1.
+
+      lv_val1 = ls_password-password+lv_pos1(1).
+      lv_val2 = ls_password-password+lv_pos2(1).
+
+      IF ( lv_val1 = ls_password-letter AND lv_val2 <> ls_password-letter )
+        OR ( lv_val1 <> ls_password-letter AND lv_val2 = ls_password-letter ).
+        lv_valid = lv_valid + 1.
+      ENDIF.
+    ENDLOOP.
+
+    output = lv_valid.
+    CONDENSE output.
 
   ENDMETHOD.
 
 
   METHOD zif_advent2020_hvam~solve.
 
-    output = part1( input ).
+    output = part2( input ).
 
   ENDMETHOD.
 ENDCLASS.
