@@ -17,11 +17,11 @@ CLASS ltcl_test IMPLEMENTATION.
 
   METHOD part1.
 
-    DATA(lv_result) = mo_cut->part1( || ).
+    DATA(lv_result) = mo_cut->part1( |1-3 a: abcde\n1-3 b: cdefg\n2-9 c: ccccccccc| ).
 
     cl_abap_unit_assert=>assert_equals(
       act = lv_result
-      exp = || ).
+      exp = |2| ).
 
   ENDMETHOD.
 
