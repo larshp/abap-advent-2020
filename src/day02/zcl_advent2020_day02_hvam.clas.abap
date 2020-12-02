@@ -98,7 +98,7 @@ CLASS ZCL_ADVENT2020_DAY02_HVAM IMPLEMENTATION.
       lv_val2 = ls_password-password+lv_pos2(1).
 
       IF ( lv_val1 = ls_password-letter AND lv_val2 <> ls_password-letter )
-        OR ( lv_val1 <> ls_password-letter AND lv_val2 = ls_password-letter ).
+          OR ( lv_val1 <> ls_password-letter AND lv_val2 = ls_password-letter ).
         lv_valid = lv_valid + 1.
       ENDIF.
     ENDLOOP.
