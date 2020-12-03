@@ -95,7 +95,7 @@ CLASS ZCL_ADVENT2020_DAY03_HVAM IMPLEMENTATION.
 
     LOOP AT lt_trees INTO lv_str.
       index = index + 1.
-      IF index > 1 AND index MOD down <> 0.
+      IF index > 1 AND down > 1 AND index MOD down = 0.
         CONTINUE.
       ENDIF.
       pos = x MOD width.
