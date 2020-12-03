@@ -191,11 +191,7 @@
     },
     "line_break_multiple_parameters": true,
     "line_break_style": true,
-    "line_length": {
-      "exclude": [],
-      "severity": "Error",
-      "length": 120
-    },
+    "line_length": false,
     "line_only_punc": {
       "exclude": [],
       "severity": "Error",
