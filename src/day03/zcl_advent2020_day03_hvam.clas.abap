@@ -121,9 +121,7 @@ CLASS ZCL_ADVENT2020_DAY03_HVAM IMPLEMENTATION.
       x = x + right.
     ENDLOOP.
 
-    IF hits = 0.
-      BREAK-POINT.
-    ENDIF.
+    ASSERT hits > 0.
 
   ENDMETHOD.
 
