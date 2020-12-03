@@ -5,6 +5,7 @@ CLASS ltcl_test DEFINITION FOR TESTING DURATION SHORT RISK LEVEL HARMLESS FINAL.
     DATA mo_cut TYPE REF TO zcl_advent2020_day03_hvam.
     METHODS setup.
     METHODS part1 FOR TESTING.
+    METHODS part1_2 FOR TESTING.
     METHODS part2 FOR TESTING.
 ENDCLASS.
 
@@ -25,6 +26,16 @@ CLASS ltcl_test IMPLEMENTATION.
     cl_abap_unit_assert=>assert_equals(
       act = lv_result
       exp = |7| ).
+
+  ENDMETHOD.
+
+  METHOD part1_2.
+
+    DATA(lv_result) = mo_cut->part1( |....\n...#\n..#.\n.#..| ).
+
+    cl_abap_unit_assert=>assert_equals(
+      act = lv_result
+      exp = |3| ).
 
   ENDMETHOD.
 
