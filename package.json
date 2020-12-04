@@ -1,8 +1,8 @@
 {
-  "name": "abap-advent-2020-template",
+  "name": "abap-advent-2020-hvam",
   "private": true,
   "version": "1.0.0",
-  "description": "Advent of Code 2020 - ABAP template",
+  "description": "Advent of Code 2020 - Lars Hvam",
   "scripts": {
     "downport": "rm -rf downport && cp src -r downport && abaplint --fix abaplint_downport.json",
     "unit": "rm -rf output && abap_transpile && echo RUNNING && node output/index.js",
@@ -14,8 +14,8 @@
   "author": "",
   "license": "Unlicense",
   "dependencies": {
-    "@abaplint/cli": "^2.61.7",
-    "@abaplint/runtime": "^0.8.16",
-    "@abaplint/transpiler-cli": "^0.8.16"
+    "@abaplint/cli": "^2.61.9",
+    "@abaplint/runtime": "^0.8.17",
+    "@abaplint/transpiler-cli": "^0.8.17"
   }
 }
