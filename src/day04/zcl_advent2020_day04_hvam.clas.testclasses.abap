@@ -39,7 +39,7 @@ CLASS ltcl_test IMPLEMENTATION.
 
     cl_abap_unit_assert=>assert_equals(
       act = lv_result
-      exp = || ).
+      exp = |2| ).
 
   ENDMETHOD.
 

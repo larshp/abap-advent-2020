@@ -45,7 +45,46 @@ CLASS ZCL_ADVENT2020_DAY04_HVAM IMPLEMENTATION.
 
   METHOD part1.
 
+    DATA valid TYPE i.
+
     DATA(lines) = get_lines( input ).
+
+    LOOP AT lines INTO DATA(lv_line).
+
+      FIND FIRST OCCURRENCE OF 'byr:' IN lv_line.
+      IF sy-subrc <> 0.
+        CONTINUE.
+      ENDIF.
+      FIND FIRST OCCURRENCE OF 'iyr:' IN lv_line.
+      IF sy-subrc <> 0.
+        CONTINUE.
+      ENDIF.
+      FIND FIRST OCCURRENCE OF 'eyr:' IN lv_line.
+      IF sy-subrc <> 0.
+        CONTINUE.
+      ENDIF.
+      FIND FIRST OCCURRENCE OF 'hgt:' IN lv_line.
+      IF sy-subrc <> 0.
+        CONTINUE.
+      ENDIF.
+      FIND FIRST OCCURRENCE OF 'hcl:' IN lv_line.
+      IF sy-subrc <> 0.
+        CONTINUE.
+      ENDIF.
+      FIND FIRST OCCURRENCE OF 'ecl:' IN lv_line.
+      IF sy-subrc <> 0.
+        CONTINUE.
+      ENDIF.
+      FIND FIRST OCCURRENCE OF 'pid:' IN lv_line.
+      IF sy-subrc <> 0.
+        CONTINUE.
+      ENDIF.
+
+      valid = valid + 1.
+    ENDLOOP.
+
+    output = valid.
+    CONDENSE output.
 
   ENDMETHOD.
 
