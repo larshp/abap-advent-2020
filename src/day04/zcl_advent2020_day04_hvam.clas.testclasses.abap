@@ -9,6 +9,7 @@ CLASS ltcl_test DEFINITION FOR TESTING DURATION SHORT RISK LEVEL HARMLESS FINAL.
     METHODS part2 FOR TESTING.
     METHODS part2_invalid FOR TESTING.
     METHODS part2_valid FOR TESTING.
+    METHODS part2_more_invalid FOR TESTING.
 
 ENDCLASS.
 
@@ -47,8 +48,7 @@ CLASS ltcl_test IMPLEMENTATION.
 
   METHOD part2.
 
-* todo, check mv_input
-*    DATA(lv_result) = mo_cut->part2( || ).
+*    DATA(lv_result) = mo_cut->part2( mv_input ).
 *
 *    cl_abap_unit_assert=>assert_equals(
 *      act = lv_result
@@ -98,6 +98,32 @@ CLASS ltcl_test IMPLEMENTATION.
     |hgt:59cm ecl:zzz\n| &
     |eyr:2038 hcl:74454a iyr:2023\n| &
     |pid:3556412378 byr:2007|.
+
+    DATA(lv_result) = mo_cut->part2( lv_invalid ).
+
+    cl_abap_unit_assert=>assert_equals(
+      act = lv_result
+      exp = |0| ).
+
+  ENDMETHOD.
+
+  METHOD part2_more_invalid.
+
+    DATA lv_invalid TYPE string.
+
+* valid, |byr:1944 iyr:2010 eyr:2021 hgt:158cm hcl:#b6652a ecl:blu pid:093154719\n\n| &
+
+    lv_invalid =
+      |iyr:2010 hgt:158 hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719\n\n| &
+      |iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:0934719\n\n| &
+      |byr:2003 iyr:2010 eyr:2021 hgt:158cm hcl:#b6652a ecl:blu pid:093154719\n\n| &
+      |byr:1944 iyr:2010 eyr:2021 hgt:190in hcl:#b6652a ecl:blu pid:093154719\n\n| &
+      |byr:1944 iyr:2010 eyr:2021 hgt:190 hcl:#b6652a ecl:blu pid:093154719\n\n| &
+      |byr:1944 iyr:2010 eyr:2021 hgt:158cm hcl:#123abz ecl:blu pid:093154719\n\n| &
+      |byr:1944 iyr:2010 eyr:2021 hgt:158cm hcl:123abc ecl:blu pid:093154719\n\n| &
+      |byr:1944 iyr:2010 eyr:2021 hgt:158cm hcl:#b6652a ecl:wat pid:093154719\n\n| &
+      |byr:1944 iyr:2010 eyr:2021 hgt:158cm hcl:#b6652a ecl:blu pid:0123456789\n\n| &
+      |iyr:2010 hgt:in hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719|.
 
     DATA(lv_result) = mo_cut->part2( lv_invalid ).
 

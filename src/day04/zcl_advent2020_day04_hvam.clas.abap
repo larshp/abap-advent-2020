@@ -37,6 +37,7 @@ CLASS ZCL_ADVENT2020_DAY04_HVAM IMPLEMENTATION.
 
     LOOP AT tmp INTO DATA(lv_tmp).
       REPLACE ALL OCCURRENCES OF |\n| IN lv_tmp WITH | |.
+      lv_tmp = lv_tmp && | |. " workaround
       APPEND lv_tmp TO lines.
     ENDLOOP.
 
@@ -101,41 +102,41 @@ CLASS ZCL_ADVENT2020_DAY04_HVAM IMPLEMENTATION.
 
     LOOP AT lines INTO lv_line.
 
-      FIND FIRST OCCURRENCE OF REGEX 'byr:(\d\d\d\d)' IN lv_line SUBMATCHES lv_data.
+      FIND FIRST OCCURRENCE OF REGEX 'byr:(\d\d\d\d)\s' IN lv_line SUBMATCHES lv_data.
       IF sy-subrc <> 0 OR lv_data < 1920 OR lv_data > 2002.
         CONTINUE.
       ENDIF.
 
-      FIND FIRST OCCURRENCE OF REGEX 'iyr:(\d\d\d\d)' IN lv_line SUBMATCHES lv_data.
+      FIND FIRST OCCURRENCE OF REGEX 'iyr:(\d\d\d\d)\s' IN lv_line SUBMATCHES lv_data.
       IF sy-subrc <> 0 OR lv_data < 2010 OR lv_data > 2020.
         CONTINUE.
       ENDIF.
 
-      FIND FIRST OCCURRENCE OF REGEX 'eyr:(\d\d\d\d)' IN lv_line SUBMATCHES lv_data.
+      FIND FIRST OCCURRENCE OF REGEX 'eyr:(\d\d\d\d)\s' IN lv_line SUBMATCHES lv_data.
       IF sy-subrc <> 0 OR lv_data < 2020 OR lv_data > 2030.
         CONTINUE.
       ENDIF.
 
-      FIND FIRST OCCURRENCE OF REGEX 'hgt:(\d+)(in|cm)' IN lv_line SUBMATCHES lv_data lv_unit.
+      FIND FIRST OCCURRENCE OF REGEX 'hgt:(\d+)(in|cm)\s' IN lv_line SUBMATCHES lv_data lv_unit.
       IF sy-subrc <> 0.
-        CONTINUE.
-      ELSEIF lv_unit = 'in' AND ( lv_data < 59 OR lv_data > 76 ).
         CONTINUE.
       ELSEIF lv_unit = 'cm' AND ( lv_data < 150 OR lv_data > 193 ).
         CONTINUE.
+      ELSEIF lv_unit = 'in' AND ( lv_data < 59 OR lv_data > 76 ).
+        CONTINUE.
       ENDIF.
 
-      FIND FIRST OCCURRENCE OF REGEX 'hcl:#[0-9a-f]{6}' IN lv_line.
+      FIND FIRST OCCURRENCE OF REGEX 'hcl:#[0-9a-f]{6}\s' IN lv_line.
       IF sy-subrc <> 0.
         CONTINUE.
       ENDIF.
 
-      FIND FIRST OCCURRENCE OF REGEX 'ecl:(amb|blu|brn|gry|grn|hzl|oth)' IN lv_line.
+      FIND FIRST OCCURRENCE OF REGEX 'ecl:(amb|blu|brn|gry|grn|hzl|oth)\s' IN lv_line.
       IF sy-subrc <> 0.
         CONTINUE.
       ENDIF.
 
-      FIND FIRST OCCURRENCE OF REGEX 'pid:\d{9}' IN lv_line.
+      FIND FIRST OCCURRENCE OF REGEX 'pid:\d{9}\s' IN lv_line.
       IF sy-subrc <> 0.
         CONTINUE.
       ENDIF.
