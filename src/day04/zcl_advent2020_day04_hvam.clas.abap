@@ -46,10 +46,11 @@ CLASS ZCL_ADVENT2020_DAY04_HVAM IMPLEMENTATION.
   METHOD part1.
 
     DATA valid TYPE i.
+    DATA lv_line TYPE string.
 
     DATA(lines) = get_lines( input ).
 
-    LOOP AT lines INTO DATA(lv_line).
+    LOOP AT lines INTO lv_line.
 
       FIND FIRST OCCURRENCE OF 'byr:' IN lv_line.
       IF sy-subrc <> 0.
