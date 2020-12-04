@@ -37,7 +37,7 @@ CLASS ZCL_ADVENT2020_DAY04_HVAM IMPLEMENTATION.
 
     LOOP AT tmp INTO DATA(lv_tmp).
       REPLACE ALL OCCURRENCES OF |\n| IN lv_tmp WITH | |.
-      lv_tmp = lv_tmp && | |. " workaround
+      lv_tmp = lv_tmp && | |. " workaround for end of line regex matching
       APPEND lv_tmp TO lines.
     ENDLOOP.
 
