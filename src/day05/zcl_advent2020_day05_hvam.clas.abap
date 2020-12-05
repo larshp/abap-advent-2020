@@ -58,6 +58,7 @@ CLASS ZCL_ADVENT2020_DAY05_HVAM IMPLEMENTATION.
 
   METHOD part2.
 
+    DATA lv_index TYPE i.
     DATA lt_ids TYPE STANDARD TABLE OF i WITH DEFAULT KEY.
 
     SPLIT input AT |\n| INTO TABLE DATA(table).
@@ -67,6 +68,17 @@ CLASS ZCL_ADVENT2020_DAY05_HVAM IMPLEMENTATION.
       APPEND ls_data-id TO lt_ids.
     ENDLOOP.
     SORT lt_ids.
+
+    LOOP AT lt_ids INTO DATA(lv_id).
+      lv_index = sy-tabix + 1.
+      READ TABLE lt_ids INDEX lv_index TRANSPORTING NO FIELDS.
+      IF sy-tabix <> 0.
+        output = lv_id + 1.
+        EXIT. " current loop
+      ENDIF.
+    ENDLOOP.
+
+    CONDENSE output.
 
   ENDMETHOD.
 
