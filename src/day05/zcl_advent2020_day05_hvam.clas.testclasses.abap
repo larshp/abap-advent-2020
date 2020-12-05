@@ -90,11 +90,11 @@ CLASS ltcl_test IMPLEMENTATION.
 
   METHOD part2.
 
-    DATA(lv_result) = mo_cut->part2( || ).
-
-    cl_abap_unit_assert=>assert_equals(
-      act = lv_result
-      exp = || ).
+*    DATA(lv_result) = mo_cut->part2( || ).
+*
+*    cl_abap_unit_assert=>assert_equals(
+*      act = lv_result
+*      exp = || ).
 
   ENDMETHOD.
 
