@@ -24,88 +24,56 @@ CLASS ltcl_test IMPLEMENTATION.
 
   METHOD util1.
 
-    DATA lv_row TYPE i.
-    DATA lv_column TYPE i.
-
-    mo_cut->util(
-      EXPORTING
-        pass   = 'FBFBBFFRLR'
-      IMPORTING
-        row    = lv_row
-        column = lv_column ).
+    DATA(ls_data) = mo_cut->util( 'FBFBBFFRLR' ).
 
     cl_abap_unit_assert=>assert_equals(
-      act = lv_row
+      act = ls_data-row
       exp = 44 ).
 
     cl_abap_unit_assert=>assert_equals(
-      act = lv_column
+      act = ls_data-column
       exp = 5 ).
 
   ENDMETHOD.
 
   METHOD util2.
 
-    DATA lv_row TYPE i.
-    DATA lv_column TYPE i.
-
-    mo_cut->util(
-      EXPORTING
-        pass   = 'BFFFBBFRRR'
-      IMPORTING
-        row    = lv_row
-        column = lv_column ).
+    DATA(ls_data) = mo_cut->util( 'BFFFBBFRRR' ).
 
     cl_abap_unit_assert=>assert_equals(
-      act = lv_row
+      act = ls_data-row
       exp = 70 ).
 
     cl_abap_unit_assert=>assert_equals(
-      act = lv_column
+      act = ls_data-column
       exp = 7 ).
 
   ENDMETHOD.
 
   METHOD util3.
 
-    DATA lv_row TYPE i.
-    DATA lv_column TYPE i.
-
-    mo_cut->util(
-      EXPORTING
-        pass   = 'FFFBBBFRRR'
-      IMPORTING
-        row    = lv_row
-        column = lv_column ).
+    DATA(ls_data) = mo_cut->util( 'FFFBBBFRRR' ).
 
     cl_abap_unit_assert=>assert_equals(
-      act = lv_row
+      act = ls_data-row
       exp = 14 ).
 
     cl_abap_unit_assert=>assert_equals(
-      act = lv_column
+      act = ls_data-column
       exp = 7 ).
 
   ENDMETHOD.
 
   METHOD util4.
 
-    DATA lv_row TYPE i.
-    DATA lv_column TYPE i.
-
-    mo_cut->util(
-      EXPORTING
-        pass   = 'BBFFBBFRLL'
-      IMPORTING
-        row    = lv_row
-        column = lv_column ).
+    DATA(ls_data) = mo_cut->util( 'BBFFBBFRLL' ).
 
     cl_abap_unit_assert=>assert_equals(
-      act = lv_row
+      act = ls_data-row
       exp = 102 ).
 
     cl_abap_unit_assert=>assert_equals(
-      act = lv_column
+      act = ls_data-column
       exp = 4 ).
 
   ENDMETHOD.

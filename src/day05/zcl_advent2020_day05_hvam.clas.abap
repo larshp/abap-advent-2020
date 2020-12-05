@@ -7,12 +7,17 @@ CLASS zcl_advent2020_day05_hvam DEFINITION
 
     INTERFACES zif_advent2020_hvam .
 
+    TYPES: BEGIN OF ty_data,
+             row    TYPE i,
+             column TYPE i,
+             id     TYPE i,
+           END OF ty_data.
+
     METHODS util
       IMPORTING
-        !pass   TYPE string
-      EXPORTING
-        !row    TYPE i
-        !column TYPE i .
+        !pass       TYPE string
+      RETURNING
+        VALUE(data) TYPE ty_data .
     METHODS part1
       IMPORTING
         !input        TYPE string
@@ -34,27 +39,15 @@ CLASS ZCL_ADVENT2020_DAY05_HVAM IMPLEMENTATION.
 
   METHOD part1.
 
-    DATA lv_row TYPE i.
-    DATA lv_column TYPE i.
     DATA lv_max TYPE i.
-    DATA lv_id TYPE i.
 
     SPLIT input AT |\n| INTO TABLE DATA(table).
 
     LOOP AT table INTO DATA(pass).
-
-      util(
-        EXPORTING
-          pass   = pass
-        IMPORTING
-          row    = lv_row
-          column = lv_column ).
-
-      lv_id = ( lv_row * 8 ) + lv_column.
-      IF lv_id > lv_max.
-        lv_max = lv_id.
+      DATA(ls_data) = util( pass ).
+      IF ls_data-id > lv_max.
+        lv_max = ls_data-id.
       ENDIF.
-
     ENDLOOP.
 
     output = lv_max.
@@ -93,7 +86,7 @@ CLASS ZCL_ADVENT2020_DAY05_HVAM IMPLEMENTATION.
         ASSERT 0 = 1.
       ENDIF.
     ENDDO.
-    row = lv_high.
+    data-row = lv_high.
 
     lv_low = 0.
     lv_high = 7.
@@ -110,7 +103,9 @@ CLASS ZCL_ADVENT2020_DAY05_HVAM IMPLEMENTATION.
         ASSERT 0 = 1.
       ENDIF.
     ENDDO.
-    column = lv_high.
+    data-column = lv_high.
+
+    data-id = ( data-row * 8 ) + data-column.
 
   ENDMETHOD.
 
