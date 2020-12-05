@@ -58,7 +58,14 @@ CLASS ZCL_ADVENT2020_DAY05_HVAM IMPLEMENTATION.
 
   METHOD part2.
 
-* todo
+    DATA lt_ids TYPE STANDARD TABLE OF i WITH DEFAULT KEY.
+
+    SPLIT input AT |\n| INTO TABLE DATA(table).
+
+    LOOP AT table INTO DATA(pass).
+      DATA(ls_data) = util( pass ).
+      APPEND ls_data-id TO lt_ids.
+    ENDLOOP.
 
   ENDMETHOD.
 
@@ -112,7 +119,7 @@ CLASS ZCL_ADVENT2020_DAY05_HVAM IMPLEMENTATION.
 
   METHOD zif_advent2020_hvam~solve.
 
-    output = part1( input ).
+    output = part2( input ).
 
   ENDMETHOD.
 ENDCLASS.
