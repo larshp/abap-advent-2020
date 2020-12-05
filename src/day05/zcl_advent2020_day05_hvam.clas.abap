@@ -66,6 +66,7 @@ CLASS ZCL_ADVENT2020_DAY05_HVAM IMPLEMENTATION.
       DATA(ls_data) = util( pass ).
       APPEND ls_data-id TO lt_ids.
     ENDLOOP.
+    SORT lt_ids.
 
   ENDMETHOD.
 
