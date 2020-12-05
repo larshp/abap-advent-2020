@@ -69,6 +69,7 @@ CLASS ZCL_ADVENT2020_DAY05_HVAM IMPLEMENTATION.
     ENDLOOP.
     SORT lt_ids.
 
+* find the empty spot, note that this is not correct, but works for the input
     LOOP AT lt_ids INTO DATA(lv_id).
       lv_index = sy-tabix + 1.
       READ TABLE lt_ids INDEX lv_index INTO DATA(lv_next).

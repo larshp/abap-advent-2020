@@ -9,7 +9,6 @@ CLASS ltcl_test DEFINITION FOR TESTING DURATION SHORT RISK LEVEL HARMLESS FINAL.
     METHODS util3 FOR TESTING.
     METHODS util4 FOR TESTING.
     METHODS part1 FOR TESTING.
-    METHODS part2 FOR TESTING.
 
 ENDCLASS.
 
@@ -85,16 +84,6 @@ CLASS ltcl_test IMPLEMENTATION.
     cl_abap_unit_assert=>assert_equals(
       act = lv_result
       exp = |357| ).
-
-  ENDMETHOD.
-
-  METHOD part2.
-
-*    DATA(lv_result) = mo_cut->part2( || ).
-*
-*    cl_abap_unit_assert=>assert_equals(
-*      act = lv_result
-*      exp = || ).
 
   ENDMETHOD.
 
