@@ -1,24 +1,24 @@
-class ZCL_ADVENT2020_DAY07_HVAM definition
-  public
-  final
-  create public .
+CLASS zcl_advent2020_day07_hvam DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
 
-public section.
+  PUBLIC SECTION.
 
-  interfaces ZIF_ADVENT2020_HVAM .
+    INTERFACES zif_advent2020_hvam .
 
-  methods PART1
-    importing
-      !INPUT type STRING
-    returning
-      value(OUTPUT) type STRING .
-  methods PART2
-    importing
-      !INPUT type STRING
-    returning
-      value(OUTPUT) type STRING .
+    METHODS part1
+      IMPORTING
+        !input        TYPE string
+      RETURNING
+        VALUE(output) TYPE string .
+    METHODS part2
+      IMPORTING
+        !input        TYPE string
+      RETURNING
+        VALUE(output) TYPE string .
   PROTECTED SECTION.
-private section.
+  PRIVATE SECTION.
 ENDCLASS.
 
 
