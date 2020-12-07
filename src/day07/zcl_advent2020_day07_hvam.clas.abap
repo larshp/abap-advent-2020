@@ -50,14 +50,17 @@ CLASS ZCL_ADVENT2020_DAY07_HVAM IMPLEMENTATION.
 
   METHOD is_valid.
 
-    READ TABLE mt_bags INTO DATA(ls_bag) WITH KEY color = iv_color.
-    ASSERT sy-subrc = 0.
-
-    LOOP AT ls_bag-contents INTO DATA(ls_contents).
-      IF ls_contents-color = 'shiny gold' OR is_valid( ls_contents-color ) = abap_true.
-        valid = abap_true.
-        RETURN.
+    LOOP AT mt_bags INTO DATA(ls_bag).
+      IF ls_bag-color <> iv_color.
+        CONTINUE.
       ENDIF.
+
+      LOOP AT ls_bag-contents INTO DATA(ls_contents).
+        IF ls_contents-color = 'shiny gold' OR is_valid( ls_contents-color ) = abap_true.
+          valid = abap_true.
+          RETURN.
+        ENDIF.
+      ENDLOOP.
     ENDLOOP.
 
     valid = abap_false.
