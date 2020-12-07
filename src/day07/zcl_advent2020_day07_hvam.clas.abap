@@ -1,44 +1,44 @@
-class ZCL_ADVENT2020_DAY07_HVAM definition
-  public
-  final
-  create public .
+CLASS zcl_advent2020_day07_hvam DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
 
-public section.
+  PUBLIC SECTION.
 
-  interfaces ZIF_ADVENT2020_HVAM .
+    INTERFACES zif_advent2020_hvam .
 
-  types:
-    BEGIN OF ty_contents,
-             count TYPE i,
-             color TYPE string,
-           END OF ty_contents .
-  types:
-    BEGIN OF ty_bag,
-             color    TYPE string,
-             contents TYPE STANDARD TABLE OF ty_contents WITH DEFAULT KEY,
-           END OF ty_bag .
+    TYPES:
+      BEGIN OF ty_contents,
+        count TYPE i,
+        color TYPE string,
+      END OF ty_contents .
+    TYPES:
+      BEGIN OF ty_bag,
+        color    TYPE string,
+        contents TYPE STANDARD TABLE OF ty_contents WITH DEFAULT KEY,
+      END OF ty_bag .
 
-  data:
-    mt_bags TYPE STANDARD TABLE OF ty_bag WITH DEFAULT KEY .
+    DATA:
+      mt_bags TYPE STANDARD TABLE OF ty_bag WITH DEFAULT KEY .
 
-  methods IS_VALID
-    importing
-      !IV_COLOR type STRING
-    returning
-      value(VALID) type ABAP_BOOL .
-  methods PARSE
-    importing
-      !INPUT type STRING .
-  methods PART1
-    importing
-      !INPUT type STRING
-    returning
-      value(OUTPUT) type STRING .
-  methods PART2
-    importing
-      !INPUT type STRING
-    returning
-      value(OUTPUT) type STRING .
+    METHODS is_valid
+      IMPORTING
+        !iv_color    TYPE string
+      RETURNING
+        VALUE(valid) TYPE abap_bool .
+    METHODS parse
+      IMPORTING
+        !input TYPE string .
+    METHODS part1
+      IMPORTING
+        !input        TYPE string
+      RETURNING
+        VALUE(output) TYPE string .
+    METHODS part2
+      IMPORTING
+        !input        TYPE string
+      RETURNING
+        VALUE(output) TYPE string .
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.
