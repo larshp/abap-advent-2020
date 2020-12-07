@@ -21,6 +21,11 @@ CLASS zcl_advent2020_day07_hvam DEFINITION
     DATA:
       mt_bags TYPE STANDARD TABLE OF ty_bag WITH DEFAULT KEY .
 
+    METHODS count_bags
+      IMPORTING
+        !iv_color       TYPE string
+      RETURNING
+        VALUE(rv_count) TYPE i .
     METHODS is_valid
       IMPORTING
         !iv_color    TYPE string
@@ -46,6 +51,23 @@ ENDCLASS.
 
 
 CLASS ZCL_ADVENT2020_DAY07_HVAM IMPLEMENTATION.
+
+
+  METHOD count_bags.
+
+    LOOP AT mt_bags INTO DATA(ls_bag).
+      IF ls_bag-color = iv_color.
+
+        rv_count = 1.
+        LOOP AT ls_bag-contents INTO DATA(ls_contents).
+          rv_count = rv_count + ls_contents-count * count_bags( ls_contents-color ).
+        ENDLOOP.
+
+        EXIT. "current loop
+      ENDIF.
+    ENDLOOP.
+
+  ENDMETHOD.
 
 
   METHOD is_valid.
@@ -127,14 +149,25 @@ CLASS ZCL_ADVENT2020_DAY07_HVAM IMPLEMENTATION.
 
   METHOD part2.
 
-* todo
+    DATA lv_count TYPE i.
+
+    parse( input ).
+
+    LOOP AT mt_bags INTO DATA(ls_bag).
+      IF ls_bag-color = 'shiny gold'.
+        lv_count = count_bags( ls_bag-color ) - 1.
+      ENDIF.
+    ENDLOOP.
+
+    output = lv_count.
+    CONDENSE output.
 
   ENDMETHOD.
 
 
   METHOD zif_advent2020_hvam~solve.
 
-    output = part1( input ).
+    output = part2( input ).
 
   ENDMETHOD.
 ENDCLASS.
