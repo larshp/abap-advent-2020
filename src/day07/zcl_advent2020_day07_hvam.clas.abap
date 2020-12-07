@@ -128,6 +128,8 @@ CLASS ZCL_ADVENT2020_DAY07_HVAM IMPLEMENTATION.
 
   METHOD part1.
 
+* note that this is really slow to run
+
     DATA lv_valid TYPE i.
 
     parse( input ).
