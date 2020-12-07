@@ -81,9 +81,9 @@ CLASS ZCL_ADVENT2020_DAY07_HVAM IMPLEMENTATION.
 
       DO.
         FIND REGEX ' (\d+) (\w+ \w+)' IN lv_line
-          SUBMATCHES DATA(lv_count) lv_color
           MATCH OFFSET DATA(lv_offset)
-          MATCH LENGTH DATA(lv_length).
+          MATCH LENGTH DATA(lv_length)
+          SUBMATCHES DATA(lv_count) lv_color.
         IF sy-subrc = 0.
           APPEND VALUE #( count = lv_count color = lv_color ) TO ls_bag-contents.
           lv_offset = lv_offset + lv_length.
