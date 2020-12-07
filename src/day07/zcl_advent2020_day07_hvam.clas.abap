@@ -68,6 +68,8 @@ CLASS ZCL_ADVENT2020_DAY07_HVAM IMPLEMENTATION.
   METHOD parse.
 
     DATA ls_bag LIKE LINE OF mt_bags.
+    DATA lv_offset TYPE i.
+    DATA lv_length TYPE i.
 
     CLEAR mt_bags.
 
@@ -81,8 +83,8 @@ CLASS ZCL_ADVENT2020_DAY07_HVAM IMPLEMENTATION.
 
       DO.
         FIND REGEX ' (\d+) (\w+ \w+)' IN lv_line
-          MATCH OFFSET DATA(lv_offset)
-          MATCH LENGTH DATA(lv_length)
+          MATCH OFFSET lv_offset
+          MATCH LENGTH lv_length
           SUBMATCHES DATA(lv_count) lv_color.
         IF sy-subrc = 0.
           APPEND VALUE #( count = lv_count color = lv_color ) TO ls_bag-contents.
