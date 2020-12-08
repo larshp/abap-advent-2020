@@ -114,13 +114,16 @@ CLASS ZCL_ADVENT2020_DAY08_HVAM IMPLEMENTATION.
   METHOD run.
 
     DATA index TYPE i VALUE 1.
+    DATA lv_end TYPE i.
 
     LOOP AT mt_instructions ASSIGNING FIELD-SYMBOL(<ls_instruction>).
       <ls_instruction>-visited = abap_false.
     ENDLOOP.
 
+    lv_end = lines( mt_instructions ) + 1.
+
     DO.
-      IF index = lines( mt_instructions ) + 1.
+      IF index = lv_end.
         data-terminates = abap_true.
         RETURN.
       ENDIF.
