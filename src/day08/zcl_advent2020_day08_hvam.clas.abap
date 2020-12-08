@@ -15,6 +15,15 @@ CLASS zcl_advent2020_day08_hvam DEFINITION
 
     DATA: mt_instructions TYPE STANDARD TABLE OF ty_instruction WITH DEFAULT KEY.
 
+    TYPES: BEGIN OF ty_runtime,
+             terminates  TYPE abap_bool,
+             accumulator TYPE i,
+           END OF ty_runtime.
+
+    METHODS run
+      RETURNING
+        VALUE(data) TYPE ty_runtime.
+
     METHODS parse
       IMPORTING
         !input TYPE string.
@@ -57,22 +66,37 @@ CLASS ZCL_ADVENT2020_DAY08_HVAM IMPLEMENTATION.
 
   METHOD part1.
 
-    DATA accumulator TYPE i.
-    DATA index TYPE i VALUE 1.
+    parse( input ).
+
+    DATA(runtime) = run( ).
+
+    ASSERT runtime-terminates = abap_false.
+    output = runtime-accumulator.
+    CONDENSE output.
+
+  ENDMETHOD.
+
+
+  METHOD part2.
 
     parse( input ).
+
+  ENDMETHOD.
+
+
+  METHOD run.
+
+    DATA index TYPE i VALUE 1.
 
     DO.
       READ TABLE mt_instructions INDEX index ASSIGNING FIELD-SYMBOL(<ls_instruction>).
       IF <ls_instruction>-visited = abap_true.
-        output = accumulator.
-        CONDENSE output.
         RETURN.
       ENDIF.
       <ls_instruction>-visited = abap_true.
       CASE <ls_instruction>-instruction.
         WHEN 'acc'.
-          accumulator = accumulator + <ls_instruction>-argument.
+          data-accumulator = data-accumulator + <ls_instruction>-argument.
           index = index + 1.
         WHEN 'jmp'.
           index = index + <ls_instruction>-argument.
@@ -83,19 +107,14 @@ CLASS ZCL_ADVENT2020_DAY08_HVAM IMPLEMENTATION.
       ENDCASE.
     ENDDO.
 
-  ENDMETHOD.
-
-
-  METHOD part2.
-
-* todo
+    data-terminates = abap_true.
 
   ENDMETHOD.
 
 
   METHOD zif_advent2020_hvam~solve.
 
-    output = part1( input ).
+    output = part2( input ).
 
   ENDMETHOD.
 ENDCLASS.
