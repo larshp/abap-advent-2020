@@ -19,11 +19,24 @@ CLASS ltcl_test IMPLEMENTATION.
 
   METHOD part1.
 
-    DATA(lv_result) = mo_cut->part1( || ).
+    DATA lv_input TYPE string.
+
+    lv_input =
+      |nop +0\n| &
+      |acc +1\n| &
+      |jmp +4\n| &
+      |acc +3\n| &
+      |jmp -3\n| &
+      |acc -99\n| &
+      |acc +1\n| &
+      |jmp -4\n| &
+      |acc +6|.
+
+    DATA(lv_result) = mo_cut->part1( lv_input ).
 
     cl_abap_unit_assert=>assert_equals(
       act = lv_result
-      exp = || ).
+      exp = |5| ).
 
   ENDMETHOD.
 
