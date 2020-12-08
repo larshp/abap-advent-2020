@@ -81,6 +81,33 @@ CLASS ZCL_ADVENT2020_DAY08_HVAM IMPLEMENTATION.
 
     parse( input ).
 
+    LOOP AT mt_instructions ASSIGNING FIELD-SYMBOL(<ls_instruction>).
+      CASE <ls_instruction>-instruction.
+        WHEN 'jmp'.
+          <ls_instruction>-instruction = 'nop'.
+        WHEN 'nop'.
+          <ls_instruction>-instruction = 'jmp'.
+        WHEN OTHERS.
+          CONTINUE.
+      ENDCASE.
+
+      DATA(runtime) = run( ).
+      IF runtime-terminates = abap_true.
+        output = runtime-accumulator.
+        CONDENSE output.
+        RETURN.
+      ENDIF.
+
+      CASE <ls_instruction>-instruction.
+        WHEN 'jmp'.
+          <ls_instruction>-instruction = 'nop'.
+        WHEN 'nop'.
+          <ls_instruction>-instruction = 'jmp'.
+      ENDCASE.
+    ENDLOOP.
+
+    ASSERT 0 = 1.
+
   ENDMETHOD.
 
 
@@ -88,9 +115,17 @@ CLASS ZCL_ADVENT2020_DAY08_HVAM IMPLEMENTATION.
 
     DATA index TYPE i VALUE 1.
 
+    LOOP AT mt_instructions ASSIGNING FIELD-SYMBOL(<ls_instruction>).
+      <ls_instruction>-visited = abap_false.
+    ENDLOOP.
+
     DO.
-      READ TABLE mt_instructions INDEX index ASSIGNING FIELD-SYMBOL(<ls_instruction>).
-      IF <ls_instruction>-visited = abap_true.
+      IF index = lines( mt_instructions ) + 1.
+        data-terminates = abap_true.
+        RETURN.
+      ENDIF.
+      READ TABLE mt_instructions INDEX index ASSIGNING <ls_instruction>.
+      IF sy-subrc <> 0 OR <ls_instruction>-visited = abap_true.
         RETURN.
       ENDIF.
       <ls_instruction>-visited = abap_true.
@@ -106,8 +141,6 @@ CLASS ZCL_ADVENT2020_DAY08_HVAM IMPLEMENTATION.
           ASSERT 0 = 1.
       ENDCASE.
     ENDDO.
-
-    data-terminates = abap_true.
 
   ENDMETHOD.
 
