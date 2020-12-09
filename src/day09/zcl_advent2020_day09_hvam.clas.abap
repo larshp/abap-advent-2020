@@ -44,6 +44,7 @@ CLASS ZCL_ADVENT2020_DAY09_HVAM IMPLEMENTATION.
     DATA lv_number2 TYPE int8.
     DATA lv_index TYPE i.
     DATA lv_offset TYPE i.
+    DATA lv_tmp TYPE i.
 
     lv_offset = iv_index - preamble.
     DO preamble TIMES.
@@ -59,7 +60,8 @@ CLASS ZCL_ADVENT2020_DAY09_HVAM IMPLEMENTATION.
           CONTINUE.
         ENDIF.
         IF lv_number1 <> lv_number2.
-          APPEND lv_number1 + lv_number2 TO valid_numbers.
+          lv_tmp = lv_number1 + lv_number2.
+          APPEND lv_tmp TO valid_numbers.
         ENDIF.
       ENDDO.
     ENDDO.
