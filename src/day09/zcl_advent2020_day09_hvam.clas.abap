@@ -167,7 +167,7 @@ CLASS ZCL_ADVENT2020_DAY09_HVAM IMPLEMENTATION.
 
     preamble = 25.
 
-    output = part1( input ).
+    output = part2( input ).
 
   ENDMETHOD.
 ENDCLASS.
