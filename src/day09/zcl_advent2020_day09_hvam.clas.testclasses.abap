@@ -15,15 +15,41 @@ CLASS ltcl_test IMPLEMENTATION.
 
     mo_cut = NEW #( ).
 
+    mo_cut->preamble = 5.
+
   ENDMETHOD.
 
   METHOD part1.
 
-    DATA(lv_result) = mo_cut->part1( || ).
+    DATA lv_input TYPE string.
+
+    lv_input =
+      |35\n| &
+      |20\n| &
+      |15\n| &
+      |25\n| &
+      |47\n| &
+      |40\n| &
+      |62\n| &
+      |55\n| &
+      |65\n| &
+      |95\n| &
+      |102\n| &
+      |117\n| &
+      |150\n| &
+      |182\n| &
+      |127\n| &
+      |219\n| &
+      |299\n| &
+      |277\n| &
+      |309\n| &
+      |576|.
+
+    DATA(lv_result) = mo_cut->part1( lv_input ).
 
     cl_abap_unit_assert=>assert_equals(
       act = lv_result
-      exp = || ).
+      exp = |127| ).
 
   ENDMETHOD.
 

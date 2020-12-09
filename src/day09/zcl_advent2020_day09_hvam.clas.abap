@@ -7,6 +7,12 @@ CLASS zcl_advent2020_day09_hvam DEFINITION
 
     INTERFACES zif_advent2020_hvam .
 
+    DATA preamble TYPE i .
+    DATA numbers TYPE STANDARD TABLE OF int8 WITH DEFAULT KEY.
+
+    METHODS parse
+      IMPORTING
+        !input TYPE string .
     METHODS part1
       IMPORTING
         !input        TYPE string
@@ -26,7 +32,24 @@ ENDCLASS.
 CLASS ZCL_ADVENT2020_DAY09_HVAM IMPLEMENTATION.
 
 
+  METHOD parse.
+
+    CLEAR numbers.
+
+    SPLIT input AT |\n| INTO TABLE DATA(strings).
+
+    LOOP AT strings INTO DATA(str).
+      APPEND str TO numbers.
+    ENDLOOP.
+
+  ENDMETHOD.
+
+
   METHOD part1.
+
+
+    parse( input ).
+
   ENDMETHOD.
 
 
@@ -35,6 +58,8 @@ CLASS ZCL_ADVENT2020_DAY09_HVAM IMPLEMENTATION.
 
 
   METHOD zif_advent2020_hvam~solve.
+
+    preamble = 25.
 
     output = part1( input ).
 
