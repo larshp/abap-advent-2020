@@ -14,8 +14,8 @@
   "author": "",
   "license": "Unlicense",
   "dependencies": {
-    "@abaplint/cli": "^2.62.0",
-    "@abaplint/runtime": "^0.8.22",
-    "@abaplint/transpiler-cli": "^0.8.22"
+    "@abaplint/cli": "^2.62.1",
+    "@abaplint/runtime": "^1.0.4",
+    "@abaplint/transpiler-cli": "^1.0.4"
   }
 }
