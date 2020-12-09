@@ -140,6 +140,9 @@ CLASS ZCL_ADVENT2020_DAY09_HVAM IMPLEMENTATION.
           READ TABLE numbers INDEX lv_index INTO DATA(lv_number).
           ASSERT sy-subrc = 0.
           lv_sum = lv_sum + lv_number.
+          IF lv_sum > lv_invalid.
+            EXIT. " current loop
+          ENDIF.
           IF lv_number < lv_min.
             lv_min = lv_number.
           ENDIF.
