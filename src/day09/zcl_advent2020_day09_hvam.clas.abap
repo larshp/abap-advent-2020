@@ -111,6 +111,55 @@ CLASS ZCL_ADVENT2020_DAY09_HVAM IMPLEMENTATION.
 
 
   METHOD part2.
+
+    DATA lv_invalid TYPE int8.
+    DATA lv_sum TYPE int8.
+    DATA lv_min TYPE int8.
+    DATA lv_max TYPE int8.
+    DATA lv_start TYPE i.
+    DATA lv_index TYPE i.
+    DATA lv_range TYPE i.
+    DATA lv_end TYPE i.
+
+    lv_invalid = part1( input ).
+
+    DO lines( numbers ) TIMES.
+      lv_start = sy-index.
+      DO lines( numbers ) TIMES.
+        lv_end = sy-index.
+        IF lv_start >= lv_end.
+          CONTINUE.
+        ENDIF.
+
+        lv_sum = 0.
+        lv_min = 198620152477517.
+        lv_max = 0.
+        lv_range = lv_end - lv_start + 1. " including both borders
+        DO lv_range TIMES.
+          lv_index = sy-index + lv_start - 1.
+          READ TABLE numbers INDEX lv_index INTO DATA(lv_number).
+          ASSERT sy-subrc = 0.
+          lv_sum = lv_sum + lv_number.
+          IF lv_number < lv_min.
+            lv_min = lv_number.
+          ENDIF.
+          IF lv_number > lv_max.
+            lv_max = lv_number.
+          ENDIF.
+        ENDDO.
+
+        IF lv_sum = lv_invalid.
+          lv_sum = lv_min + lv_max.
+          output = lv_sum.
+          CONDENSE output.
+          RETURN.
+        ENDIF.
+
+      ENDDO.
+    ENDDO.
+
+    ASSERT 0 = 1.
+
   ENDMETHOD.
 
 
