@@ -62,19 +62,7 @@
     "check_syntax": true,
     "check_text_elements": true,
     "check_transformation_exists": true,
-    "class_attribute_names": {
-      "exclude": [],
-      "severity": "Error",
-      "patternKind": "required",
-      "ignoreNames": [],
-      "ignorePatterns": [],
-      "ignoreExceptions": true,
-      "ignoreLocal": true,
-      "ignoreInterfaces": false,
-      "statics": "^G._.+$",
-      "instance": "^M._.+$",
-      "constants": ""
-    },
+    "class_attribute_names": false,
     "cloud_types": true,
     "colon_missing_space": true,
     "commented_code": false,
@@ -270,7 +258,7 @@
     "prefer_inline": false,
     "prefer_is_not": true,
     "prefer_returning_to_exporting": true,
-    "prefer_xsdbool": true,
+    "prefer_xsdbool": false,
     "preferred_compare_operator": {
       "badOperators": [
         "EQ",
