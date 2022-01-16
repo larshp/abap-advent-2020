@@ -174,7 +174,7 @@
       "ignoreKeywords": []
     },
     "line_break_multiple_parameters": false,
-    "line_break_style": true,
+    "line_break_style": false,
     "line_length": false,
     "line_only_punc": {
       "exclude": [],
