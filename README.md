@@ -3,9 +3,9 @@
 
 Let's do it the difficult way! By ABAP running on [NodeJS](https://nodejs.org)
 
-## Prerequsites
+## Prerequisites
 
-NodeJS 12 installed
+NodeJS 16+ installed
 
 No ABAP system required
 
