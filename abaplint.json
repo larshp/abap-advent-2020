@@ -240,6 +240,8 @@
       "add": true,
       "subtract": true,
       "multiply": true,
+      "formDefinition": true,
+      "formImplementation": true,
       "move": true,
       "parameter": true,
       "callTransformation": true,
