@@ -11,8 +11,6 @@ jobs:
     - uses: actions/checkout@v4
       with:
         fetch-depth: 2
-    - name: Use Node.js
-      uses: actions/setup-node@v4
-    - run: npm install
-    - run: npm run downport
-    - run: npm run unit
+    - uses: actions/setup-node@v4
+    - run: npm ci
+    - run: npm test
